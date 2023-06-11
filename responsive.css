@@ -140,3 +140,192 @@
     }
 
 }
+
+@media(max-width: 768px){
+    .logo-respon img{
+        width: 100%;
+        height: auto;
+    }
+    .menu-responsive,.cart-respon{
+        font-size: 90px;
+    }
+    .user-actions .quantity-cart {
+        padding: 4px 16px;
+        font-size: 24px;
+    }
+    .single-pro-img #MainImg {
+        height: 100vh;
+    }
+    .small-img-col {
+        height: 145px;
+    }
+    #prodetails .single-pro-details {
+        font-size: 2rem;
+    }
+    #keyboardType{
+        font-size: 3rem;
+    }
+    .quantity {
+        width: 100px;
+        font-size: 3rem;
+        padding: 8px;
+    }
+    .btn{
+        font-size: 3rem;
+        height: 100px;
+        margin-bottom: 10px
+    }
+    .rating-stars{
+        width: 40%;
+    }
+    .switch-page h4{
+        font-size: 2rem;
+    }
+    #description-page {
+        font-size: 2rem;
+    }
+    #review-page{
+        font-size: 2rem;
+    }
+    #review-page button{
+        font-size: 2rem;
+    }
+    #review-form input{
+        height: 50px;
+    }
+    .form-group:nth-child(5) input{
+        width: 40px;
+    }
+    .footer{
+        font-size: 1.5rem;
+    }
+    .footer-social-icon{
+        font-size: 1.5rem;
+    }
+    .footer-section-heading {
+        font-size: 2rem;
+    }
+    .footer-content{
+        padding: 0 10px;
+    }
+    .popup-content h3{
+        font-size: 3rem;
+    }
+    .popup-content{
+        font-size: 2rem;
+        width: 70%;
+    }
+    #close-popup{
+        font-size: 2rem;
+    }
+    .nav-content li a {
+        font-size: 3rem;
+    }
+    .search input::placeholder{
+        font-size: 3rem;
+    }
+    .search input{
+        padding-top: 20px;
+    }
+    .search{
+        padding: 12px 16px;
+    }
+    .nav-content{
+        width: 70%;
+    }
+    .nav-content li i {
+        font-size: 4rem;
+        position: absolute;
+        right: 0;
+    }
+    #page-header{
+        height: 40vh;
+        font-size: 2rem;
+    }
+    .product-item img{
+        height: 300px;
+    }
+    .product-info h4{
+        font-size: 2rem;
+    }
+    .product-price{
+        font-size: 2.5rem;
+    }
+    .product-item .btn{
+        display: none;
+    }
+    .favorite-icon{
+        width: 50px;
+        height: 50px;
+        font-size: 2rem;
+        opacity: 1;
+    }
+    .product-item .discount{
+        font-size: 2rem;
+    }
+    .custom-button-prev, .custom-button-next, .custom-button-prev1, .custom-button-next1, .custom-button-prev2, .custom-button-next2 {
+        font-size: 2rem;
+    }
+    .slick-dots li button {
+        font-size: 2rem;
+        width: 50px;
+        height: 50px;
+    }
+    .swiper-container{
+        height: 500px;
+    }
+    .follow{
+        font-size: 3rem;
+    }
+    .social-buttons {
+        display: flex;
+        flex-direction: column;
+    }
+    .youtube, .facebook, .lazada, .shopee {
+        height: 250px;
+        width: 65%;
+        margin: auto;
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+    .new-products h2{
+        font-size: 3rem;
+    }
+    .two-img{
+        flex-direction: column;
+    }
+    .two-img.animate-in img{
+        width: 100%;
+    }
+    .large-img.animate-in img{
+        height: 500px;
+    }
+    .horizontal-line:before, .horizontal-line:after {
+        width: 20%;
+    }
+    .three-img{
+        flex-direction: column;
+    }
+    .three-img.animate-in img{
+        width: 100%;
+        margin-bottom: 20px;
+        height: 500px;
+    }
+    .form input[type="text"], .form input[type="email"], .form input[type="password"]{
+        height: 90px;
+    }
+    .form-container{
+        font-size: 2rem;
+    }
+    .form input::placeholder{
+        font-size: 2rem;
+    }
+    button[type="submit"]{
+        font-size: 2rem;
+        height: 90px;
+    }
+    .banner-button{
+        font-size: 2rem;
+        padding: 22px 24px;
+    }
+}
