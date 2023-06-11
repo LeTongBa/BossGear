@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOSSGEAR</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+  <link rel="stylesheet" href="responsive.css">
+
+
+  <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Slick Slider -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+
+<script src="https://unpkg.com/scrollreveal@4.1.0/dist/scrollreveal.min.js"></script>
+
+
+
+
+</head>
+<body>
+  <div class="left-side"></div>
+  <div class="right-side"></div>
+  <div class="wrapper">
+    <div class="form-overlay"></div>
+
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <h3>Giỏ hàng</h3>
+        <p>Chưa có sản phẩm nào</p>
+        <button id="close-popup">Đóng</button>
+      </div>
+    </div>
+
+    <div id="form-container" class="form-container">
+      <h2>Đăng nhập / Đăng ký</h2>
+      <form id="login-form" class="form">
+        <h3>Đăng nhập</h3>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Mật khẩu" required>
+        <div class="form-options">
+          <label>
+            <input type="checkbox" name="remember" id="remember-checkbox">
+            Ghi nhớ mật khẩu
+          </label>
+          <a href="#" class="forgot-password">Quên mật khẩu?</a>
+        </div>
+        <button type="submit">Đăng nhập</button>
+      </form>
+      
+      <form id="register-form" class="form">
+        <h3>Đăng ký</h3>
+        <input type="text" placeholder="Họ và tên" required>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Mật khẩu" required>
+        <button type="submit">Đăng ký</button>
+      </form>
+    </div>
+
+
+
+
+    <div class="top-row">
+      <div class="contact-info">
+        <p><i class='bx bx-phone'></i>123-456-789</p>
+        <p><i class='bx bx-time'></i>8:00 - 18:00</p>
+      </div>
+      <div class="social-icons">
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bx-envelope'></i></a>
+        <a href="#"><i class='bx bxl-youtube'></i></a>
+      </div>
+    </div>
+
+
+    <!-- respon header -->
+
+
+
+    <div class="header-responsive">
+      <div class="menu-responsive">
+        <i id="open-nav-icon" class="bx bx-menu"></i>        
+      </div>
+      <div class="logo-respon">
+        <img onclick="window.location.href='index.html' " src="img/logo.png" alt="Logo">
+      </div>
+      <div class="cart-respon">
+        <div class="user-actions">
+          <a id="open-popup" href="#"><i class='bx bxs-cart'></i></a>
+          <span class="quantity-cart">0</span>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div id="open-nav" class="nav">
+      <div class="nav-content">
+        <ul>
+          <li>
+            <label class="search">
+              <input type="text" placeholder="Tìm kiếm">
+              <div class="search-btn">
+                <button><i class='bx bx-search'></i></button>
+              </div>
+            </label>
+          </li>
+          <li>
+            <a onclick="window.location.href='banphim.html'" href="#">Bàn phím</a>
+            <i class='bx bx-chevron-down' onclick="toggleSubmenu(this)"></i>
+            <ul class="submenu-respon">
+              <li><a href="#">Phím cơ</a></li>
+              <li><a href="#">Phím giả cơ</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Chuột Gaming</a></li>
+          <li><a href="#">Tai nghe</a></li>
+          <li><a href="#">Kit Custom</a></li>
+          <li><a href="#">Keycaps</a></li>
+          <li>
+            <a href="#">Phụ kiện</a>
+            <i class='bx bx-chevron-down' onclick="toggleSubmenu(this)"></i>
+            <ul class="submenu-respon">
+              <li><a href="#">Kê tay rời</a></li>
+              <li><a href="#">Loa</a></li>
+              <li><a href="#">Pad chuột</a></li>
+              <li><a href="#">PK khác</a></li>
+            </ul>
+          </li>
+          <li><a onclick="window.location.href='contact.html'" href="#">Liên hệ</a></li>
+          <li><a href="#" class="login-register-link1">Đăng nhập/Đăng ký</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- end respon header  -->
+
+
+  
+    <header class="header">
+      <div class="middle-row">
+        <div class="logo">
+          <img   onclick="window.location.href='index.html' " src="img/logo.png" alt="Logo">
+        </div>
+        <label class="search-bar">
+          <input type="text" placeholder="Tìm kiếm">
+          <button><i class='bx bx-search'></i></button>
+        </label>
+        <div class="user-actions">
+          <a href="#" class="login-register-link">Đăng nhập/Đăng ký</a>
+          <a id="open-popup1" href="#"><i class='bx bxs-cart'></i>Giỏ hàng</a>
+          <span class="quantity-cart">0</span>
+        </div>
+      </div>
+      <div class="bottom-row">
+        <div class="menu-container">
+          <nav class="navigation">
+            <ul>
+              <li>
+                <a onclick="window.location.href='banphim.html' " href="#">Bàn phím <i class='bx bx-chevron-down'></i></a>
+                <ul class="submenu">
+                  <li><a href="#">Phím cơ</a></li>
+                  <li><a href="#">Phím giả cơ</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Chuột Gaming</a></li>
+              <li><a href="#">Tai nghe</a></li>
+              <li><a href="#">Kit Custom</a></li>
+              <li><a href="#">Keycaps</a></li>
+              <li><a href="#">Phụ kiện <i class='bx bx-chevron-down'></i></a>
+                <ul class="submenu">
+                  <li><a href="#">Kê tay rời</a></li>
+                  <li><a href="#">Loa</a></li>
+                  <li><a href="#">Pad chuột</a></li>
+                  <li><a href="#">PK khác</a></li>
+                </ul>
+              </li>
+              <li><a class="active" href="#">Liên hệ</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    
+
+
+    
+    
+    <main>
+        <section class="contact-section">
+          <h3>THÔNG TIN LIÊN HỆ</h3>
+          <div class="contact-infomation">
+            <div class="contact-item">
+              <h4>Địa chỉ:</h4>
+              <p>Xã Vạn Thọ, huyện Vạn Ninh, tỉnh Khánh Hòa</p>
+            </div>
+            <div class="contact-item">
+              <h4>SĐT:</h4>
+              <p>0979.301.857</p>
+            </div>
+            <div class="contact-item">
+              <h4>Zalo:</h4>
+              <p>0977.453.906</p>
+            </div>
+            <div class="contact-item">
+              <h4>Fanpage:</h4>
+              <p><a href="https://www.facebook.com/Bossgear.BMT/" target="_blank">https://www.facebook.com/Bossgear.BMT/</a></p>
+            </div>
+            <div class="contact-item">
+              <h4>Shopee:</h4>
+              <p><a href="https://shp.ee/irckxgf" target="_blank">https://shp.ee/irckxgf</a></p>
+            </div>
+            <div class="contact-item">
+              <h4>Google Map:</h4>
+              <p><a href="https://goo.gl/maps/DXkmNzaW5gNaJFgdA" target="_blank">Shop Boss Gear BMT Chuyên Gaming Gear – Google Maps</a></p>
+            </div>
+            <div class="contact-item">
+              <h4>Email:</h4>
+              <p>Shopbossgear@gmail.com</p>
+            </div>
+            <div class="contact-item">
+              <h4>Website KEYCAP:</h4>
+              <ul>
+                <li><a href="https://bgkeycap.com/" target="_blank">Website: BGKEYCAP – Not Only Keycap</a></li>
+                <li><a href="https://shp.ee/igj335z" target="_blank">Shopee: https://shp.ee/igj335z</a></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </main>
+      
+
+
+      <div id="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62255.69927919625!2d109.30699514910388!3d12.779731854507038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31701d1383e0ffdd%3A0x47b969c303777d95!2zVuG6oW4gVGjhu40sIFbhuqFuIE5pbmgsIEtow6FuaCBIw7JhLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1686148473829!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+
+
+
+
+    
+
+
+
+
+
+
+    
+      
+
+
+    
+
+
+    
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 class="footer-section-heading">Về chúng tôi</h3>
+          <a href="#" class="footer-link">Giới thiệu</a>
+          <a href="#" class="footer-link">Chính sách bảo mật</a>
+          <a href="#" class="footer-link">Điều khoản sử dụng</a>
+        </div>
+        <div class="footer-section">
+          <h3 class="footer-section-heading">Hỗ trợ</h3>
+          <a href="#" class="footer-link">Hướng dẫn mua hàng</a>
+          <a href="#" class="footer-link">Chính sách đổi trả</a>
+          <a href="#" class="footer-link">Liên hệ</a>
+        </div>
+        <div class="footer-section">
+          <h3 class="footer-section-heading">Kết nối với chúng tôi</h3>
+          <div class="footer-social-icons">
+            <a href="#" class="footer-social-icon"><i class='bx bxl-facebook'></i></a>
+            <a href="#" class="footer-social-icon"><i class='bx bx-envelope'></i></a>
+            <a href="#" class="footer-social-icon"><i class='bx bxl-youtube'></i></a>
+
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+
+  </div>
+
+  
+  
+  
+  
+  
+
+ 
+  
+  
+  
+  
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

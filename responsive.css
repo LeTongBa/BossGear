@@ -1,0 +1,142 @@
+@media(min-width: 821px) and (max-width: 913px){    
+    .logo{
+        width: 24%;
+    }
+    .user-actions a{
+        margin-left: 20px;
+    }
+    .swiper-container {
+        height: 400px;
+    }
+    .youtube, .facebook, .lazada, .shopee {
+        height: 130px;
+    }
+    .slider{
+        gap: 8px
+    }
+    .product-item{
+        padding: 6px;
+    }
+    .product-item img {
+        height: 130px;
+    }
+    .product-info{
+        padding-bottom: 5px;
+    }
+    .product-info h4{
+        font-size: 14px;
+    }
+    .product-info a{
+        font-size: 0.754rem;
+    }
+    .btn{
+        padding: 10px 15px;
+    }
+    .popup-content{
+        width: 35%;
+    }
+    .small-img{
+        height: 80%;
+    }
+    #prodetails .single-pro-img {
+        width: 52%;
+        margin-right: 16px;
+    }
+}
+
+@media(min-width: 914px) and (max-width: 1009px){
+    .swiper-container{
+        height: 480px;
+    }
+    .youtube, .facebook, .lazada, .shopee {
+        height: 145px;
+    }
+    .slider{
+        gap: 10px;
+    }
+    .product-item img {
+        height: 140px;
+    }
+    .btn{
+        padding: 8px 7px;
+    }
+    .product-info{
+        padding-bottom: 5px;
+    }
+    .popup-content{
+        width: 35%;
+    }
+    #prodetails .single-pro-img {
+        width: 50%;
+        margin-right: 16px;
+    }
+    .small-img {
+        height: 85%;
+    }
+}
+@media(min-width: 1010px) and (max-width: 1200px){
+    .popup-content{
+        width: 30%;
+    }
+}
+
+
+@media(max-width: 821px){
+    .wrapper{
+        width: 821px;
+    }
+    .top-row{
+        display: none;
+    }
+    .header {
+        display: none;
+    }
+    .header-responsive{
+        display: flex;
+    }
+    .user-actions .quantity-cart{
+        left: 85%;
+    }
+    .swiper-container{
+        height: 370px;
+    }
+    .youtube, .facebook, .lazada, .shopee {
+        height: 105px;
+    }
+    .horizontal-line:before, .horizontal-line:after {
+        width: 50%;
+    }
+    .slider{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .product-item img{
+        height: 190px;
+    }
+    .product-item .btn {
+        opacity: 1;
+    }
+    #prodetails{
+        flex-direction: column;
+        margin-top: 0;
+    }
+    #prodetails .single-pro-img {
+        width: 100%;
+    }
+    .single-pro-img #MainImg {
+        height: 60vh;
+    }
+    .small-img{
+        height: 100%;
+    }
+    #prodetails .single-pro-details{
+        width: 100%;
+        margin-top: 40px;
+    }
+    .popup-content{
+        width: 50%;
+    }
+    .nav-content{
+        width: 50%;
+    }
+
+}

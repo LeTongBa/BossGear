@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOSSGEAR</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+  <link rel="stylesheet" href="responsive.css">
+
+
+  <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Slick Slider -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+
+<script src="https://unpkg.com/scrollreveal@4.1.0/dist/scrollreveal.min.js"></script>
+
+
+
+
+</head>
+<body>
+  <div class="left-side"></div>
+  <div class="right-side"></div>
+  <div class="wrapper">
+    <div class="form-overlay"></div>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+          <h3>Giỏ hàng</h3>
+          <p>Chưa có sản phẩm nào</p>
+          <button id="close-popup">Đóng</button>
+        </div>
+    </div>
+
+    <div id="form-container" class="form-container">
+      <h2>Đăng nhập / Đăng ký</h2>
+      <form id="login-form" class="form">
+        <h3>Đăng nhập</h3>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Mật khẩu" required>
+        <div class="form-options">
+          <label>
+            <input type="checkbox" name="remember" id="remember-checkbox">
+            Ghi nhớ mật khẩu
+          </label>
+          <a href="#" class="forgot-password">Quên mật khẩu?</a>
+        </div>
+        <button type="submit">Đăng nhập</button>
+      </form>
+      
+      <form id="register-form" class="form">
+        <h3>Đăng ký</h3>
+        <input type="text" placeholder="Họ và tên" required>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Mật khẩu" required>
+        <button type="submit">Đăng ký</button>
+      </form>
+    </div>
+
+
+
+
+    <div class="top-row">
+      <div class="contact-info">
+        <p><i class='bx bx-phone'></i>123-456-789</p>
+        <p><i class='bx bx-time'></i>8:00 - 18:00</p>
+      </div>
+      <div class="social-icons">
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bx-envelope'></i></a>
+        <a href="#"><i class='bx bxl-youtube'></i></a>
+      </div>
+    </div>
+  
+    <!-- respon header -->
+
+
+
+    <div class="header-responsive">
+        <div class="menu-responsive">
+          <i id="open-nav-icon" class="bx bx-menu"></i>        
+        </div>
+        <div class="logo-respon">
+          <img onclick="window.location.href='index.html' " src="img/logo.png" alt="Logo">
+        </div>
+        <div class="cart-respon">
+          <div class="user-actions">
+            <a id="open-popup1" href="#"><i class='bx bxs-cart'></i></a>
+            <span class="quantity-cart">0</span>
+          </div>
+        </div>
+      </div>
+  
+  
+  
+      <div id="open-nav" class="nav">
+        <div class="nav-content">
+          <ul>
+            <li>
+              <label class="search">
+                <input type="text" placeholder="Tìm kiếm">
+                <div class="search-btn">
+                  <button><i class='bx bx-search'></i></button>
+                </div>
+              </label>
+            </li>
+            <li>
+              <a onclick="window.location.href='banphim.html'" href="#">Bàn phím</a>
+              <i class='bx bx-chevron-down' onclick="toggleSubmenu(this)"></i>
+              <ul class="submenu-respon">
+                <li><a href="#">Phím cơ</a></li>
+                <li><a href="#">Phím giả cơ</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Chuột Gaming</a></li>
+            <li><a href="#">Tai nghe</a></li>
+            <li><a href="#">Kit Custom</a></li>
+            <li><a href="#">Keycaps</a></li>
+            <li>
+              <a href="#">Phụ kiện</a>
+              <i class='bx bx-chevron-down' onclick="toggleSubmenu(this)"></i>
+              <ul class="submenu-respon">
+                <li><a href="#">Kê tay rời</a></li>
+                <li><a href="#">Loa</a></li>
+                <li><a href="#">Pad chuột</a></li>
+                <li><a href="#">PK khác</a></li>
+              </ul>
+            </li>
+            <li><a onclick="window.location.href='contact.html'" href="#">Liên hệ</a></li>
+            <li><a href="#" class="login-register-link1">Đăng nhập/Đăng ký</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- end respon header  -->
+
+
+    <header class="header">
+      <div class="middle-row">
+        <div class="logo">
+          <img onclick="window.location.href='index.html' " src="img/logo.png" alt="Logo">
+        </div>
+        <label class="search-bar">
+          <input type="text" placeholder="Tìm kiếm">
+          <button><i class='bx bx-search'></i></button>
+        </label>
+        <div class="user-actions">
+          <a href="#" class="login-register-link">Đăng nhập/Đăng ký</a>
+          <a id="open-popup" href="#"><i class='bx bxs-cart'></i>Giỏ hàng</a>
+          <span class="quantity-cart">0</span>
+        </div>
+      </div>
+      <div class="bottom-row">
+        <div class="menu-container">
+          <nav class="navigation">
+            <ul>
+              <li>
+                <a class="active" href="#">Bàn phím <i class='bx bx-chevron-down'></i></a>
+                <ul class="submenu">
+                  <li><a href="#">Phím cơ</a></li>
+                  <li><a href="#">Phím giả cơ</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Chuột Gaming</a></li>
+              <li><a href="#">Tai nghe</a></li>
+              <li><a href="#">Kit Custom</a></li>
+              <li><a href="#">Keycaps</a></li>
+              <li><a href="#">Phụ kiện <i class='bx bx-chevron-down'></i></a>
+                <ul class="submenu">
+                  <li><a href="#">Kê tay rời</a></li>
+                  <li><a href="#">Loa</a></li>
+                  <li><a href="#">Pad chuột</a></li>
+                  <li><a href="#">PK khác</a></li>
+                </ul>
+              </li>
+              <li><a onclick="window.location.href='contact.html' " href="#">Liên hệ</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    
+
+    <section id="page-header">
+        <h3>Bàn phím</h3>
+        <div class="filter">
+            <select id="keyboardType">
+                <option value="all">Tất cả</option>
+                <option value="mechanical">Cơ</option>
+                <option value="membrane">Giả cơ</option>
+            </select>
+            <div class="price-about">
+                <h5>Khoảng giá: &nbsp;0 - 3.000.000 VNĐ</h5>
+                <input type="range" min="0" max="3000000" step="100000" id="priceRange">
+            </div>
+        </div>
+      </section>
+      
+      
+
+    
+
+    
+
+    
+    <div class="new-products">
+        <h2>Bàn phím chơi game cực chất giá rẻ</h2>
+        <div class="custom-slider">
+            <div class="custom-slide">
+            <!-- Nội dung slide 1 -->
+                <div class="slider">
+                    <div class="product-item"   onclick="window.location.href='paybanphim.html' " onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                    <img src="img/product3.jpg" alt="Product 1">
+                    <div class="product-info">
+                        <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                        <p class="product-price">1.000.000 VNĐ</p>
+                        <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                        <span class="favorite-icon">
+                        <i class="bx bxs-heart"></i>
+                        </span>
+                    </div>
+                    </div>
+                    <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                    <img src="img/product3.jpg" alt="Product 1">
+                    <div class="product-info">
+                        <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                        <p class="product-price">1.000.000 VNĐ</p>
+                        <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                        <span class="favorite-icon">
+                        <i class="bx bxs-heart"></i>
+                        </span>
+                    </div>
+                    </div>
+                    <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                    <img src="img/product3.jpg" alt="Product 1">
+                    <div class="product-info">
+                        <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                        <p class="product-price">1.000.000 VNĐ</p>
+                        <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                        <span class="favorite-icon">
+                        <i class="bx bxs-heart"></i>
+                        </span>
+                    </div>
+                    </div>
+                    <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                    <img src="img/product3.jpg" alt="Product 1">
+                    <div class="product-info">
+                        <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                        <p class="product-price">1.000.000 VNĐ</p>
+                        <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                        <span class="favorite-icon">
+                        <i class="bx bxs-heart"></i>
+                        </span>
+                    </div>
+                    </div>
+                        
+                    <!-- Thêm 3 sản phẩm khác vào đây -->
+                    
+                </div>
+                <div class="slider">
+                    <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                    <img src="img/product3.jpg" alt="Product 1">
+                    <div class="product-info">
+                        <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                        <p class="product-price">1.000.000 VNĐ</p>
+                        <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                        <span class="favorite-icon">
+                        <i class="bx bxs-heart"></i>
+                        </span>
+                    </div>
+                    </div>
+                    <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                    <img src="img/product3.jpg" alt="Product 1">
+                    <div class="product-info">
+                        <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                        <p class="product-price">1.000.000 VNĐ</p>
+                        <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                        <span class="favorite-icon">
+                        <i class="bx bxs-heart"></i>
+                        </span>
+                    </div>
+                    </div>
+                    <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                    <img src="img/product3.jpg" alt="Product 1">
+                    <div class="product-info">
+                        <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                        <p class="product-price">1.000.000 VNĐ</p>
+                        <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                        <span class="favorite-icon">
+                        <i class="bx bxs-heart"></i>
+                        </span>
+                    </div>
+                    </div>
+                    <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                    <img src="img/product3.jpg" alt="Product 1">
+                    <div class="product-info">
+                        <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                        <p class="product-price">1.000.000 VNĐ</p>
+                        <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                        <span class="favorite-icon">
+                        <i class="bx bxs-heart"></i>
+                        </span>
+                    </div>
+                    </div>
+                        
+                    <!-- Thêm 3 sản phẩm khác vào đây -->
+                    
+                </div>
+                <div class="slider">
+                    <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                    <img src="img/product3.jpg" alt="Product 1">
+                    <div class="product-info">
+                        <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                        <p class="product-price">1.000.000 VNĐ</p>
+                        <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                        <span class="favorite-icon">
+                        <i class="bx bxs-heart"></i>
+                        </span>
+                    </div>
+                    </div>
+                    <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                    <img src="img/product3.jpg" alt="Product 1">
+                    <div class="product-info">
+                        <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                        <p class="product-price">1.000.000 VNĐ</p>
+                        <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                        <span class="favorite-icon">
+                        <i class="bx bxs-heart"></i>
+                        </span>
+                    </div>
+                    </div>
+                    <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                    <img src="img/product3.jpg" alt="Product 1">
+                    <div class="product-info">
+                        <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                        <p class="product-price">1.000.000 VNĐ</p>
+                        <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                        <span class="favorite-icon">
+                        <i class="bx bxs-heart"></i>
+                        </span>
+                    </div>
+                    </div>
+                    <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                    <img src="img/product3.jpg" alt="Product 1">
+                    <div class="product-info">
+                        <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                        <p class="product-price">1.000.000 VNĐ</p>
+                        <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                        <span class="favorite-icon">
+                        <i class="bx bxs-heart"></i>
+                        </span>
+                    </div>
+                    </div>
+                        
+                    <!-- Thêm 3 sản phẩm khác vào đây -->
+                    
+                </div>
+                <div class="slider">
+                    <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                    <img src="img/product3.jpg" alt="Product 1">
+                    <div class="product-info">
+                        <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                        <p class="product-price">1.000.000 VNĐ</p>
+                        <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                        <span class="favorite-icon">
+                        <i class="bx bxs-heart"></i>
+                        </span>
+                    </div>
+                    </div>
+                    <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                    <img src="img/product3.jpg" alt="Product 1">
+                    <div class="product-info">
+                        <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                        <p class="product-price">1.000.000 VNĐ</p>
+                        <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                        <span class="favorite-icon">
+                        <i class="bx bxs-heart"></i>
+                        </span>
+                    </div>
+                    </div>
+                    <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                    <img src="img/product3.jpg" alt="Product 1">
+                    <div class="product-info">
+                        <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                        <p class="product-price">1.000.000 VNĐ</p>
+                        <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                        <span class="favorite-icon">
+                        <i class="bx bxs-heart"></i>
+                        </span>
+                    </div>
+                    </div>
+                    <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                    <img src="img/product3.jpg" alt="Product 1">
+                    <div class="product-info">
+                        <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                        <p class="product-price">1.000.000 VNĐ</p>
+                        <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                        <span class="favorite-icon">
+                        <i class="bx bxs-heart"></i>
+                        </span>
+                    </div>
+                    </div>
+                        
+                    <!-- Thêm 3 sản phẩm khác vào đây -->
+                    
+                </div>
+            </div>
+            <div class="custom-slide">
+                <!-- Nội dung slide 1 -->
+                    <div class="slider" >
+                        <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                            <img src="img/product3.jpg" alt="Product 1">
+                            <div class="product-info">
+                                <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                                <p class="product-price">1.000.000 VNĐ</p>
+                                <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                                <span class="favorite-icon">
+                                <i class="bx bxs-heart"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                        <img src="img/product3.jpg" alt="Product 1">
+                        <div class="product-info">
+                            <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                            <p class="product-price">1.000.000 VNĐ</p>
+                            <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                            <span class="favorite-icon">
+                            <i class="bx bxs-heart"></i>
+                            </span>
+                        </div>
+                        </div>
+                        <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                        <img src="img/product3.jpg" alt="Product 1">
+                        <div class="product-info">
+                            <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                            <p class="product-price">1.000.000 VNĐ</p>
+                            <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                            <span class="favorite-icon">
+                            <i class="bx bxs-heart"></i>
+                            </span>
+                        </div>
+                        </div>
+                        <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                        <img src="img/product3.jpg" alt="Product 1">
+                        <div class="product-info">
+                            <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                            <p class="product-price">1.000.000 VNĐ</p>
+                            <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                            <span class="favorite-icon">
+                            <i class="bx bxs-heart"></i>
+                            </span>
+                        </div>
+                        </div>
+                            
+                        <!-- Thêm 3 sản phẩm khác vào đây -->
+                        
+                    </div>
+                    <div class="slider">
+                        <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                        <img src="img/product3.jpg" alt="Product 1">
+                        <div class="product-info">
+                            <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                            <p class="product-price">1.000.000 VNĐ</p>
+                            <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                            <span class="favorite-icon">
+                            <i class="bx bxs-heart"></i>
+                            </span>
+                        </div>
+                        </div>
+                        <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                        <img src="img/product3.jpg" alt="Product 1">
+                        <div class="product-info">
+                            <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                            <p class="product-price">1.000.000 VNĐ</p>
+                            <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                            <span class="favorite-icon">
+                            <i class="bx bxs-heart"></i>
+                            </span>
+                        </div>
+                        </div>
+                        <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                        <img src="img/product3.jpg" alt="Product 1">
+                        <div class="product-info">
+                            <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                            <p class="product-price">1.000.000 VNĐ</p>
+                            <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                            <span class="favorite-icon">
+                            <i class="bx bxs-heart"></i>
+                            </span>
+                        </div>
+                        </div>
+                        <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                        <img src="img/product3.jpg" alt="Product 1">
+                        <div class="product-info">
+                            <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                            <p class="product-price">1.000.000 VNĐ</p>
+                            <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                            <span class="favorite-icon">
+                            <i class="bx bxs-heart"></i>
+                            </span>
+                        </div>
+                        </div>
+                            
+                        <!-- Thêm 3 sản phẩm khác vào đây -->
+                        
+                    </div>
+                    <div class="slider">
+                        <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                        <img src="img/product3.jpg" alt="Product 1">
+                        <div class="product-info">
+                            <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                            <p class="product-price">1.000.000 VNĐ</p>
+                            <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                            <span class="favorite-icon">
+                            <i class="bx bxs-heart"></i>
+                            </span>
+                        </div>
+                        </div>
+                        <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                        <img src="img/product3.jpg" alt="Product 1">
+                        <div class="product-info">
+                            <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                            <p class="product-price">1.000.000 VNĐ</p>
+                            <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                            <span class="favorite-icon">
+                            <i class="bx bxs-heart"></i>
+                            </span>
+                        </div>
+                        </div>
+                        <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                        <img src="img/product3.jpg" alt="Product 1">
+                        <div class="product-info">
+                            <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                            <p class="product-price">1.000.000 VNĐ</p>
+                            <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                            <span class="favorite-icon">
+                            <i class="bx bxs-heart"></i>
+                            </span>
+                        </div>
+                        </div>
+                        <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                        <img src="img/product3.jpg" alt="Product 1">
+                        <div class="product-info">
+                            <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                            <p class="product-price">1.000.000 VNĐ</p>
+                            <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                            <span class="favorite-icon">
+                            <i class="bx bxs-heart"></i>
+                            </span>
+                        </div>
+                        </div>
+                            
+                        <!-- Thêm 3 sản phẩm khác vào đây -->
+                        
+                    </div>
+                    <div class="slider">
+                        <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                        <img src="img/product3.jpg" alt="Product 1">
+                        <div class="product-info">
+                            <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                            <p class="product-price">1.000.000 VNĐ</p>
+                            <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                            <span class="favorite-icon">
+                            <i class="bx bxs-heart"></i>
+                            </span>
+                        </div>
+                        </div>
+                        <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                        <img src="img/product3.jpg" alt="Product 1">
+                        <div class="product-info">
+                            <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                            <p class="product-price">1.000.000 VNĐ</p>
+                            <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                            <span class="favorite-icon">
+                            <i class="bx bxs-heart"></i>
+                            </span>
+                        </div>
+                        </div>
+                        <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                        <img src="img/product3.jpg" alt="Product 1">
+                        <div class="product-info">
+                            <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                            <p class="product-price">1.000.000 VNĐ</p>
+                            <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                            <span class="favorite-icon">
+                            <i class="bx bxs-heart"></i>
+                            </span>
+                        </div>
+                        </div>
+                        <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                        <img src="img/product3.jpg" alt="Product 1">
+                        <div class="product-info">
+                            <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                            <p class="product-price">1.000.000 VNĐ</p>
+                            <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                            <span class="favorite-icon">
+                            <i class="bx bxs-heart"></i>
+                            </span>
+                        </div>
+                        </div>
+                            
+                        <!-- Thêm 3 sản phẩm khác vào đây -->
+                        
+                    </div>
+                </div>
+                <div class="custom-slide">
+                    <!-- Nội dung slide 1 -->
+                        <div class="slider">
+                            <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                            <img src="img/product3.jpg" alt="Product 1">
+                            <div class="product-info">
+                                <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                                <p class="product-price">1.000.000 VNĐ</p>
+                                <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                                <span class="favorite-icon">
+                                <i class="bx bxs-heart"></i>
+                                </span>
+                            </div>
+                            </div>
+                            <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                            <img src="img/product3.jpg" alt="Product 1">
+                            <div class="product-info">
+                                <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                                <p class="product-price">1.000.000 VNĐ</p>
+                                <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                                <span class="favorite-icon">
+                                <i class="bx bxs-heart"></i>
+                                </span>
+                            </div>
+                            </div>
+                            <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                            <img src="img/product3.jpg" alt="Product 1">
+                            <div class="product-info">
+                                <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                                <p class="product-price">1.000.000 VNĐ</p>
+                                <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                                <span class="favorite-icon">
+                                <i class="bx bxs-heart"></i>
+                                </span>
+                            </div>
+                            </div>
+                            <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                            <img src="img/product3.jpg" alt="Product 1">
+                            <div class="product-info">
+                                <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                                <p class="product-price">1.000.000 VNĐ</p>
+                                <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                                <span class="favorite-icon">
+                                <i class="bx bxs-heart"></i>
+                                </span>
+                            </div>
+                            </div>
+                                
+                            <!-- Thêm 3 sản phẩm khác vào đây -->
+                            
+                        </div>
+                        <div class="slider">
+                            <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                            <img src="img/product3.jpg" alt="Product 1">
+                            <div class="product-info">
+                                <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                                <p class="product-price">1.000.000 VNĐ</p>
+                                <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                                <span class="favorite-icon">
+                                <i class="bx bxs-heart"></i>
+                                </span>
+                            </div>
+                            </div>
+                            <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                            <img src="img/product3.jpg" alt="Product 1">
+                            <div class="product-info">
+                                <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                                <p class="product-price">1.000.000 VNĐ</p>
+                                <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                                <span class="favorite-icon">
+                                <i class="bx bxs-heart"></i>
+                                </span>
+                            </div>
+                            </div>
+                            <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                            <img src="img/product3.jpg" alt="Product 1">
+                            <div class="product-info">
+                                <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                                <p class="product-price">1.000.000 VNĐ</p>
+                                <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                                <span class="favorite-icon">
+                                <i class="bx bxs-heart"></i>
+                                </span>
+                            </div>
+                            </div>
+                            <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                            <img src="img/product3.jpg" alt="Product 1">
+                            <div class="product-info">
+                                <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                                <p class="product-price">1.000.000 VNĐ</p>
+                                <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                                <span class="favorite-icon">
+                                <i class="bx bxs-heart"></i>
+                                </span>
+                            </div>
+                            </div>
+                                
+                            <!-- Thêm 3 sản phẩm khác vào đây -->
+                            
+                        </div>
+                        <div class="slider">
+                            <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                            <img src="img/product3.jpg" alt="Product 1">
+                            <div class="product-info">
+                                <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                                <p class="product-price">1.000.000 VNĐ</p>
+                                <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                                <span class="favorite-icon">
+                                <i class="bx bxs-heart"></i>
+                                </span>
+                            </div>
+                            </div>
+                            <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                            <img src="img/product3.jpg" alt="Product 1">
+                            <div class="product-info">
+                                <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                                <p class="product-price">1.000.000 VNĐ</p>
+                                <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                                <span class="favorite-icon">
+                                <i class="bx bxs-heart"></i>
+                                </span>
+                            </div>
+                            </div>
+                            <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                            <img src="img/product3.jpg" alt="Product 1">
+                            <div class="product-info">
+                                <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                                <p class="product-price">1.000.000 VNĐ</p>
+                                <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                                <span class="favorite-icon">
+                                <i class="bx bxs-heart"></i>
+                                </span>
+                            </div>
+                            </div>
+                            <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                            <img src="img/product3.jpg" alt="Product 1">
+                            <div class="product-info">
+                                <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                                <p class="product-price">1.000.000 VNĐ</p>
+                                <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                                <span class="favorite-icon">
+                                <i class="bx bxs-heart"></i>
+                                </span>
+                            </div>
+                            </div>
+                                
+                            <!-- Thêm 3 sản phẩm khác vào đây -->
+                            
+                        </div>
+                        <div class="slider">
+                            <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                            <img src="img/product3.jpg" alt="Product 1">
+                            <div class="product-info">
+                                <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                                <p class="product-price">1.000.000 VNĐ</p>
+                                <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                                <span class="favorite-icon">
+                                <i class="bx bxs-heart"></i>
+                                </span>
+                            </div>
+                            </div>
+                            <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                            <img src="img/product3.jpg" alt="Product 1">
+                            <div class="product-info">
+                                <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                                <p class="product-price">1.000.000 VNĐ</p>
+                                <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                                <span class="favorite-icon">
+                                <i class="bx bxs-heart"></i>
+                                </span>
+                            </div>
+                            </div>
+                            <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                            <img src="img/product3.jpg" alt="Product 1">
+                            <div class="product-info">
+                                <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                                <p class="product-price">1.000.000 VNĐ</p>
+                                <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                                <span class="favorite-icon">
+                                <i class="bx bxs-heart"></i>
+                                </span>
+                            </div>
+                            </div>
+                            <div class="product-item" onmouseover="changeImage(this, 'img/product1.webp')" onmouseout="changeImage(this, 'img/product3.jpg')">
+                            <img src="img/product3.jpg" alt="Product 1">
+                            <div class="product-info">
+                                <h4>Bàn Phím Cơ Attack Shark K75 RGB Clear Có Núm, Lót Full Foam Silicon, Mod Stab, Linear Switch</h4>
+                                <p class="product-price">1.000.000 VNĐ</p>
+                                <a href="#" class="btn">Thêm vào giỏ hàng</a>
+                                <span class="favorite-icon">
+                                <i class="bx bxs-heart"></i>
+                                </span>
+                            </div>
+                            </div>
+                                
+                            <!-- Thêm 3 sản phẩm khác vào đây -->
+                            
+                        </div>
+                    </div>
+        </div>
+        <div class="custom-pagination-container">
+            <div class="custom-button-prev">Previous</div>
+            <div class="custom-pagination"></div>
+            <div class="custom-button-next">Next</div>
+        </div>  
+    </div>
+
+
+
+
+
+    
+
+
+
+
+
+
+    
+      
+
+
+    
+
+
+    
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 class="footer-section-heading">Về chúng tôi</h3>
+          <a href="#" class="footer-link">Giới thiệu</a>
+          <a href="#" class="footer-link">Chính sách bảo mật</a>
+          <a href="#" class="footer-link">Điều khoản sử dụng</a>
+        </div>
+        <div class="footer-section">
+          <h3 class="footer-section-heading">Hỗ trợ</h3>
+          <a href="#" class="footer-link">Hướng dẫn mua hàng</a>
+          <a href="#" class="footer-link">Chính sách đổi trả</a>
+          <a href="#" class="footer-link">Liên hệ</a>
+        </div>
+        <div class="footer-section">
+          <h3 class="footer-section-heading">Kết nối với chúng tôi</h3>
+          <div class="footer-social-icons">
+            <a href="#" class="footer-social-icon"><i class='bx bxl-facebook'></i></a>
+            <a href="#" class="footer-social-icon"><i class='bx bx-envelope'></i></a>
+            <a href="#" class="footer-social-icon"><i class='bx bxl-youtube'></i></a>
+
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+
+  </div>
+
+  
+  
+  
+  
+
+ 
+  
+  
+  
+  
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
